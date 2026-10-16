@@ -3,121 +3,571 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arina Al-Haque - Professional Portfolio</title>
+    <title>Arina Al-Haque | Professional Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             line-height: 1.6;
-            color: #333;
-            max-width: 900px;
+        }
+
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            background-color: #f4f7f6;
+            padding: 0 20px;
         }
+
+        /* Hero Section */
         header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e293b 100%);
+            color: white;
+            padding: 80px 20px;
             text-align: center;
-            padding: 40px 20px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
+            border-bottom: 5px solid var(--primary);
         }
-        h1 { margin: 0; color: #2c3e50; font-size: 2.2em; }
-        h2 { color: #2980b9; border-bottom: 2px solid #ecf0f1; padding-bottom: 8px; margin-top: 0; }
-        .subtitle { font-size: 1.2em; color: #7f8c8d; margin-top: 10px; font-weight: 500; }
-        .contact { margin-top: 15px; }
-        .contact a { color: #2980b9; text-decoration: none; margin: 0 10px; font-weight: 500; }
-        .contact a:hover { text-decoration: underline; }
-        section {
-            background-color: #ffffff;
-            padding: 25px 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
+
+        h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
         }
-        .job { margin-bottom: 25px; }
-        .job:last-child { margin-bottom: 0; }
-        .job-title { font-weight: bold; font-size: 1.15em; color: #2c3e50; margin-bottom: 3px;}
-        .company { color: #d35400; font-weight: 600; }
-        .date { color: #95a5a6; font-size: 0.9em; margin-bottom: 10px; font-style: italic; }
-        .skills-container { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; }
-        .skill-badge {
-            background-color: #ecf0f1;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            color: #2c3e50;
+
+        .roles {
+            font-size: 1.2em;
+            color: #93c5fd;
             font-weight: 500;
+            margin-bottom: 25px;
         }
-        ul { padding-left: 20px; margin-top: 10px; }
-        li { margin-bottom: 8px; }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .contact-links a {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-links a:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .about-text {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1em;
+            color: #cbd5e1;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 2.2em;
+            color: var(--secondary);
+            margin: 60px 0 40px;
+            font-weight: 700;
+        }
+        
+        .section-title span {
+            color: var(--primary);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 60px;
+            border: 1px solid var(--border);
+        }
+
+        .skill-category {
+            margin-bottom: 25px;
+        }
+
+        .skill-category h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: #f1f5f9;
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.95em;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .tag.primary {
+            background: #eff6ff;
+            color: var(--primary-dark);
+            border-color: #bfdbfe;
+        }
+
+        .tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Portfolio Grid */
+        .company-header {
+            font-size: 1.8em;
+            color: var(--secondary);
+            margin: 50px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .company-header .years {
+            font-size: 0.6em;
+            color: var(--text-muted);
+            font-weight: 500;
+            background: var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-year {
+            font-size: 0.85em;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: inline-block;
+            background: #eff6ff;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .project-title {
+            font-size: 1.25em;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .project-duration {
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .tasks {
+            list-style: none;
+        }
+
+        .tasks li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            color: var(--text-main);
+        }
+
+        .tasks li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            margin-top: 80px;
+            background: var(--secondary);
+            color: #94a3b8;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2em; }
+            .grid { grid-template-columns: 1fr; }
+            .company-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Arina Al-Haque, S.Kom., MMSI</h1>
-        <div class="subtitle">IT Product Owner | Senior IT Business Analyst | Project Manager | Product Manager</div>
-        <div class="contact">
-            <p>
-                <a href="mailto:alhaquearina18@gmail.com">alhaquearina18@gmail.com</a> | 
+        <div class="container">
+            <h1>Arina Al-Haque, S.Kom., MMSI</h1>
+            <div class="roles">IT Product Owner | Senior IT Business Analyst | Project Manager</div>
+            <div class="contact-links">
+                <a href="mailto:alhaquearina18@gmail.com">Email Me</a>
                 <a href="https://www.linkedin.com/in/arinaalhaque/" target="_blank">LinkedIn Profile</a>
-            </p>
+            </div>
+            <div class="about-text">
+                I am an IT Product Owner and IT Business Analyst with a strong background in IT analysis and digital transformation projects. I specialize in translating business requirements into clear functional specifications and actionable insights. Experienced in Agile environments, I work closely with cross-functional teams to deliver data-driven solutions that align technology with business objectives. I am passionate about structured problem-solving, stakeholder collaboration, and creating measurable business impact through analytical thinking and strategic execution.
+            </div>
         </div>
     </header>
 
-    <section id="about">
-        <h2>About Me (she/her)</h2>
-        <p>I am an IT Product Owner and IT Business Analyst with a strong background in IT analysis and digital transformation projects. I specialize in translating business requirements into clear functional specifications and actionable insights. Experienced in Agile environments, I work closely with cross-functional teams to deliver data-driven solutions that align technology with business objectives.</p>
-        <p>I am passionate about structured problem-solving, stakeholder collaboration, and creating measurable business impact through analytical thinking and strategic execution.</p>
-    </section>
-
-    <section id="skills">
-        <h2>Skills & Proficiencies</h2>
-        <p><strong>Professional Hard Skills:</strong></p>
-        <div class="skills-container">
-            <span class="skill-badge">SQL</span>
-            <span class="skill-badge">User Stories</span>
-            <span class="skill-badge">Project Management</span>
-            <span class="skill-badge">Project Life Cycle</span>
-            <span class="skill-badge">Wireframing</span>
-            <span class="skill-badge">Product Management</span>
-            <span class="skill-badge">Data Analysis</span>
-            <span class="skill-badge">Technical Documentation</span>
-            <span class="skill-badge">UML & BPMN Flowcharts</span>
-        </div>
+    <div class="container">
+        <h2 class="section-title">Core <span>Competencies</span></h2>
         
-        <p><strong>Tools & Software:</strong></p>
         <div class="skills-container">
-            <span class="skill-badge">Jira</span>
-            <span class="skill-badge">Draw.io</span>
-            <span class="skill-badge">Figma</span>
-            <span class="skill-badge">API Postman</span>
-            <span class="skill-badge">Power BI</span>
-            <span class="skill-badge">Microsoft Visio</span>
-            <span class="skill-badge">Azure DevOps</span>
-            <span class="skill-badge">Qase.io</span>
-            <span class="skill-badge">Slack & Discord</span>
+            <div class="skill-category">
+                <h3>Hard Skills</h3>
+                <div class="tags">
+                    <span class="tag primary">Product Management</span>
+                    <span class="tag primary">Project Management</span>
+                    <span class="tag primary">Project Life Cycle Management</span>
+                    <span class="tag primary">Business Flowchart (UML, BPMN)</span>
+                    <span class="tag primary">Wireframing</span>
+                    <span class="tag primary">Technical Documentation</span>
+                    <span class="tag primary">Data Analysis</span>
+                    <span class="tag primary">User Stories</span>
+                    <span class="tag primary">SQL</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Tools & Software</h3>
+                <div class="tags">
+                    <span class="tag">Jira</span>
+                    <span class="tag">Azure DevOps</span>
+                    <span class="tag">Figma</span>
+                    <span class="tag">Draw.io</span>
+                    <span class="tag">API Postman</span>
+                    <span class="tag">Power BI</span>
+                    <span class="tag">Microsoft Visio</span>
+                    <span class="tag">Qase.io</span>
+                    <span class="tag">Trello</span>
+                    <span class="tag">Slack</span>
+                    <span class="tag">Discord</span>
+                    <span class="tag">Microsoft 365</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Soft Skills</h3>
+                <div class="tags" style="color: var(--text-muted); font-size: 0.95em;">
+                    Interpersonal Skills, Problem Solving, Time Management, Analytical Skills, and Technical Thinking.
+                </div>
+            </div>
         </div>
 
-        <p><strong>Soft Skills:</strong> Interpersonal Skills, Problem Solving, Time Management, Analytical Skills, and Technical Thinking.</p>
-    </section>
+        <h2 class="section-title">Project <span>Showcase</span></h2>
 
-    <section id="experience">
-        <h2>Professional Experience</h2>
-        
-        <div class="job">
-            <div class="job-title">IT Product Owner / Business Analyst</div>
-            <div class="company">PT Bank Syariah Indonesia (Persero) Tbk</div>
-            <div class="date">2024 - 2026</div>
-            <ul>
-                <li><strong>BI Fast Channel Development & Remittance Services:</strong> Analyzed customer requirements, created Customer Requirement Documents (CRD), designed business flows and wireframes, and managed project timelines up to the release phase.</li>
-                <li><strong>International Remittance Web Service Integration:</strong> Led API integration for global partners (e.g., Direct Remit UAE, Instant Cash UAE, Steadfast Singapore, Japan Remit Finance). Responsibilities included conducting kick-off meetings, opening firewall connections, providing UAT credentials, and monitoring the end-to-end integration process for Go-Live.</li>
-                <li><strong>System Upgrades:</strong> Managed requirements and execution for OS Web Service Remittance upgrades and Western Union SSL upgrades.</li>
-            </ul>
+        <!-- PT Bank Syariah Indonesia -->
+        <div class="company-header">
+            <div>PT Bank Syariah Indonesia (Persero) Tbk</div>
+            <div class="years">2024 - 2026</div>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div class="project-year">2026</div>
+                <h3 class="project-title">BI Fast Channel Development for Remittance Services</h3>
+                <div class="project-duration">Dec 2024 - Feb 2026</div>
+                <ul class="tasks">
+                    <li>Analyze Customer Requirements</li>
+                    <li>Created Customer Requirement Document</li>
+                    <li>Created Flow & Wireframe</li>
+                    <li>Manage Project and Monitoring Timeline</li>
+                    <li>Monitoring Project Until Release</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="project-year">2024 - 2025</div>
+                <h3 class="project-title">Integrating Customer to Remittance Web Service</h3>
+                <div class="project-duration">Various Global Partners</div>
+                <ul class="tasks">
+                    <li>Analyze Customer Requirements & Kick-Off Meeting</li>
+                    <li>Created Memo Open Connection Firewall IP Public (Dev & Prod) to Security Team</li>
+                    <li>Create Credential For Testing UAT Customer</li>
+                    <li>Handover Requirement Document For Testing</li>
+                    <li>Monitoring Integration Process & Handover UAT Document</li>
+                    <li>Finalize Integration and handover to IT Business Partner for Go Live</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="project-year">2025</div>
+                <h3 class="project-title">Upgrade OS Web Service Remittance BSI</h3>
+                <div class="project-duration">June 2024 - July 2025</div>
+                <ul class="tasks">
+                    <li>Analyze Customer Requirements</li>
+                    <li>Created Customer Requirement Document</li>
+                    <li>Created Flow</li>
+                    <li>Manage Project and Monitoring Timeline</li>
+                    <li>Monitoring Project Until Release</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="project-year">2025</div>
+                <h3 class="project-title">Upgrade SSL Western Union</h3>
+                <div class="project-duration">July 2025 - Oct 2025</div>
+                <ul class="tasks">
+                    <li>Analyze Customer Requirements</li>
+                    <li>Created Customer Requirement Document & Flow</li>
+                    <li>Manage Project and Monitoring Timeline</li>
+                    <li>Monitoring Project Until Release</li>
+                </ul>
+            </div>
         </div>
 
-        <div class="job">
-            <div class="job-title">IT Business Analyst</div>
-            <div class="company">PT Walden Global Services</div>
-            <div class="date">
+        <!-- PT Walden Global Services -->
+        <div class="company-header">
+            <div>PT Walden Global Services</div>
+            <div class="years">2021 - 2023</div>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div class="project-year">2023</div>
+                <h3 class="project-title">Kisahruang Furniture E-Commerce</h3>
+                <div class="project-duration">Aug 2022 - May 2023</div>
+                <ul class="tasks">
+                    <li>Analyze Customer Requirements</li>
+                    <li>Created Software Requirement Specification (SRS)</li>
+                    <li>Created Mockup Design & BPMN Flow</li>
+                    <li>Created User Manual Document</li>
+                    <li>Monitoring Project Until Release</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="project-year">2023</div>
+                <h3 class="project-title">MiRecord Application (PT Asuransi Jiwa Manulife Indonesia)</h3>
+                <div class="project-duration">Aug 2022 - Mar 2023</div>
+                <ul class="tasks">
+                    <li>Analyze Customer Requirements</li>
+                    <li>Created Software Requirement Specification</li>
+                    <li>Created BPMN Flow</li>
+                    <li>Monitoring Timeline & Project Until Release</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="project-year">2022</div>
+                <h3 class="project-title">e-PM (Productive Maintenance) System (PT Kalbe Farma Tbk)</h3>
+                <div class="project-duration">Sep 2022 - Dec 2022</div>
+                <ul class="tasks">
+                    <li>Analyze Customer Requirements</li>
+                    <li>Created Software Requirement Specification</li>
+                    <li>Created Mockup Design & BPMN Flow</li>
+                    <li>Created User Manual Document</li>
+                    <li>Monitoring Project Until Release</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="project-year">2022</div>
+                <h3 class="project-title">BNPB UMKM Marketplace</h3>
+                <div class="project-duration">May 2022 - Dec 2022</div>
+                <ul class="tasks">
+                    <li>Analyze Customer Requirements</li>
+                    <li>Created Software Requirement Specification</li>
+                    <li>Created Mockup Design & BPMN Flow</li>
+                    <li>Created User Manual Document</li>
+                    <li>Monitoring Project Until Release</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="project-year">2022</div>
+                <h3 class="project-title">Wynt Social E-Commerce</h3>
+                <div class="project-duration">Jan 2022 - Aug 2022</div>
+                <ul class="tasks">
+                    <li>Analyze Customer Requirements</li>
+                    <li>Created Software Requirement Specification</li>
+                    <li>Created Mockup Design & BPMN Flow</li>
+                    <li>Created User Manual Document</li>
+                    <li>Monitoring Project Until Release</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="project-year">2022</div>
+                <h3 class="project-title">Solubis B2B Marketplace and Consulting</h3>
+                <div class="project-duration">Aug 2021 - Aug 2022</div>
+                <ul class="tasks">
+                    <li>Analyze Customer Requirements</li>
+                    <li>Created Software Requirement Specification</li>
+                    <li>Created Mockup Design & BPMN Flow</li>
+                    <li>Created User Manual Document</li>
+                    <li>Monitoring Project Until Release</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="project-year">2022</div>
+                <h3 class="project-title">Partnership Web (PT Pertamina Persero)</h3>
+                <div class="project-duration">July 2021 - Dec 2022</div>
+                <ul class="tasks">
+                    <li>Analyze Customer Requirements</li>
+                    <li>Created Software Requirement Specification & Mockup</li>
+                    <li>Created BPMN Flow & User Manual Document</li>
+                    <li>Created Schema Database Document</li>
+                    <li>Monitoring Project Until Release</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="project-year">2021</div>
+                <h3 class="project-title">Outsourcing Power Application (PT Bank Jatim)</h3>
+                <div class="project-duration">July 2021 - Aug 2021</div>
+                <ul class="tasks">
+                    <li>Analyze Customer Requirements</li>
+                    <li>Created Software Requirement Specification & Mockup</li>
+                    <li>Created BPMN Flow & User Manual Document</li>
+                    <li>Created Schema Database Document</li>
+                    <li>Monitoring Project Until Release</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PT Solmit Bangun Indonesia -->
+        <div class="company-header">
+            <div>PT Solmit Bangun Indonesia</div>
+            <div class="years">2019 - 2021</div>
+        </div>
+        <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.9em; font-style: italic;">
+            For all projects below, core responsibilities included: Analyzing requirements, creating Scenario Tests, BRD, FSD, Flowcharts, Mockups, SIT & UAT Documents, User Manuals, Construction & SOM Documents, Input Parameterization, and End-to-End Black Box Testing.
+        </p>
+        <div class="grid">
+            <div class="card">
+                <div class="project-year">2021</div>
+                <h3 class="project-title">Risk Limit Application</h3>
+                <div class="project-duration">PT Bank Pembangunan Daerah Bali (Sep 2020 - Mar 2021)</div>
+                <ul class="tasks">
+                    <li>Full cycle Business Analysis & Documentation</li>
+                    <li>End-to-End Application Testing (Black Box Method)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="project-year">2020</div>
+                <h3 class="project-title">Operational Risk Self-Assessment</h3>
+                <div class="project-duration">Multiple Banks incl. Bank BTN, Bank Jatim, Bank DKI (Aug 2020 - Dec 2020)</div>
+                <ul class="tasks">
+                    <li>Full cycle Business Analysis & Documentation</li>
+                    <li>End-to-End Application Testing (Black Box Method)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="project-year">2020</div>
+                <h3 class="project-title">Management Risk Information System</h3>
+                <div class="project-duration">Multiple Banks incl. Bank BTN, Bank Nagari, Bank Jateng (Apr 2020 - July 2020)</div>
+                <ul class="tasks">
+                    <li>Full cycle Business Analysis & Documentation</li>
+                    <li>End-to-End Application Testing (Black Box Method)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="project-year">2020</div>
+                <h3 class="project-title">Procurement Application</h3>
+                <div class="project-duration">PT Bank Aceh Syariah (Jan 2020 - Mar 2020)</div>
+                <ul class="tasks">
+                    <li>Full cycle Business Analysis & Documentation</li>
+                    <li>End-to-End Application Testing (Black Box Method)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="project-year">2019</div>
+                <h3 class="project-title">Governance Risk Compliance (GRC) Application</h3>
+                <div class="project-duration">Multiple Banks incl. Bank BTN, Bank Papua, Bank Lampung (July 2019 - Dec 2019)</div>
+                <ul class="tasks">
+                    <li>Full cycle Business Analysis & Documentation</li>
+                    <li>End-to-End Application Testing (Black Box Method)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="project-year">2019</div>
+                <h3 class="project-title">Compliance Application</h3>
+                <div class="project-duration">PT Bank Tabungan Negara (Persero) Tbk (Mar 2019 - June 2019)</div>
+                <ul class="tasks">
+                    <li>Full cycle Business Analysis & Documentation</li>
+                    <li>End-to-End Application Testing (Black Box Method)</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Arina Al-Haque. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
